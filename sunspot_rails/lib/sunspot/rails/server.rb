@@ -41,14 +41,14 @@ module Sunspot
       # Directory in which to store PID files
       #
       def pid_dir
-        File.join(::Rails.root, 'tmp', 'pids')
+        File.join(Rails.root, 'tmp', 'pids')
       end
 
       # 
       # Name of the PID file
       #
       def pid_file
-        "sunspot-solr-#{::Rails.env}.pid"
+        "sunspot-solr-#{Rails.env}.pid"
       end
 
       # 
@@ -59,7 +59,7 @@ module Sunspot
       # String:: data_path
       #
       def solr_data_dir
-        File.join(solr_home, 'data', ::Rails.env)
+        File.join(solr_home, 'data', Rails.env)
       end
 
       # 
@@ -95,7 +95,7 @@ module Sunspot
       # Log file for Solr. File is in the rails log/ directory.
       #
       def log_file
-        File.join(::Rails.root, 'log', "sunspot-solr-#{::Rails.env}.log")
+        File.join(Rails.root, 'log', "sunspot-solr-#{Rails.env}.log")
       end
 
       # 

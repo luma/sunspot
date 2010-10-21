@@ -13,6 +13,22 @@ module Sunspot #:nodoc:
     class <<self
       attr_writer :configuration
 
+      def root
+        @root ||= Rails.root
+      end
+
+      def root=(root)
+        @root = root
+      end
+
+      def env
+        @env ||= Rails.env
+      end
+
+      def env=(env)
+        @env = env
+      end
+
       def configuration
         @configuration ||= Sunspot::Rails::Configuration.new
       end

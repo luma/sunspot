@@ -190,11 +190,11 @@ module Sunspot #:nodoc:
       end
 
       def data_path
-        @data_path ||= user_configuration_from_key('solr', 'data_path') || File.join(::Rails.root, 'solr', 'data', ::Rails.env)
+        @data_path ||= user_configuration_from_key('solr', 'data_path') || File.join(Rails.root, 'solr', 'data', Rails.env)
       end
-      
+
       def pid_path
-        @pids_path ||= user_configuration_from_key('solr', 'pid_path') || File.join(::Rails.root, 'solr', 'pids', ::Rails.env)
+        @pids_path ||= user_configuration_from_key('solr', 'pid_path') || File.join(Rails.root, 'solr', 'pids', Rails.env)
       end
       
       # 
@@ -211,7 +211,7 @@ module Sunspot #:nodoc:
           if user_configuration_from_key('solr', 'solr_home')
             user_configuration_from_key('solr', 'solr_home')
           else
-            File.join(::Rails.root, 'solr')
+            File.join(Rails.root, 'solr')
           end
       end
 
@@ -247,7 +247,7 @@ module Sunspot #:nodoc:
       # String:: default_log_file_location
       #
       def default_log_file_location
-        File.join(::Rails.root, 'log', "solr_" + ::Rails.env + ".log")
+        File.join(Rails.root, 'log', "solr_" + Rails.env + ".log")
       end
       
       # 
@@ -274,10 +274,10 @@ module Sunspot #:nodoc:
       def user_configuration
         @user_configuration ||=
           begin
-            path = File.join(::Rails.root, 'config', 'sunspot.yml')
+            path = File.join(Rails.root, 'config', 'sunspot.yml')
             if File.exist?(path)
               File.open(path) do |file|
-                YAML.load(file)[::Rails.env]
+                YAML.load(file)[Rails.env]
               end
             else
               {}
@@ -307,7 +307,7 @@ module Sunspot #:nodoc:
         { 'test'        => 8981,
           'development' => 8982,
           'production'  => 8983
-        }[::Rails.env]  || 8983
+        }[Rails.env]  || 8983
       end
       
       def default_path
